@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday!</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="card">
+    <h1>♡ Happy Birthday My Love ♡</h1>
+    <p>Here's a little something to make you smile 💖</p>
+    <h2 class="scan-me">Scan Me!!!!</h2> 
+    <img src="qr.png" alt="QR Code" class="qr" />
+  </div>
+
+ <div class="clickable-card-container">
+  <h2>💌 Click the card to open it! 💌</h2>
+
+  <!-- Floating hearts moved outside flip-wrapper -->
+  <div class="hearts-background">
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+  </div>
+
+  <div class="flip-wrapper">
+    <div class="card-flip">
+      <div class="card-inner" id="flipCard">
+        <div class="card-front">
+          <img src="card-front.jpg" alt="Card Front" />
+        </div>
+        <div class="card-back">
+          <img src="card-inside.jpg" alt="Card Inside" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <h2 class="gallery-title">♡♡ me + you = forever ♡♡</h2>
+  <div class="gallery">
+    <div class="polaroid"><img src="images/IMG_2107.jpeg" alt="Memory 1"></div>
+    <div class="polaroid"><img src="images/IMG_2113.jpeg" alt="Memory 2"></div>
+    <div class="polaroid"><img src="images/IMG_2127.jpeg" alt="Memory 3"></div>
+    <div class="polaroid"><img src="images/IMG_2129.jpeg" alt="Memory 4"></div>
+    <div class="polaroid"><img src="images/IMG_2140.jpeg" alt="Memory 5"></div>
+    <div class="polaroid"><img src="images/IMG_8848.jpeg" alt="Memory 6"></div>
+    <div class="polaroid"><img src="images/IMG_8898.jpeg" alt="Memory 7"></div>
+  </div>
+
+  
+
+<!-- Sound effect -->
+<audio id="flipSound" src="FMTTM.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

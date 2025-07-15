@@ -1,0 +1,311 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #f3c4f3, #4af3e5);
+  background-attachment: fixed;
+  text-align: center;
+  color: #333;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.card .qr {
+  width: 150px;
+  margin-top: 20px;
+}
+
+audio {
+  display: none;
+}
+
+.gallery-title {
+  margin-top: 50px;
+  font-size: 24px;
+  color: #555;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 40px;     /* 🆕 Ensures spacing below the card */
+  position: relative;
+  z-index: 0;
+}
+
+.polaroid {
+  background: white;
+  padding: 10px;
+  width: 160px;
+  margin-bottom: 20px;  /* 🆕 Adds spacing between rows */
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.polaroid:hover {
+  transform: rotate(-2deg) scale(1.05);
+}
+
+.polaroid img {
+  width: 100%;
+  max-height: 240px;     /* 🆕 Prevents very tall images */
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.polaroid p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Flipping Card Section */
+.clickable-card-container {
+  margin: 60px auto 40px;   /* 🆕 More bottom spacing to push gallery down */
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+
+.card-flip {
+  perspective: 1000px;
+  width: 260px;
+  margin: 0 auto;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.card-inner.flip {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.card-front img,
+.card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.flip-wrapper {
+  height: 380px; /* 👈 Enough height for the flip card */
+  position: relative;
+}
+
+.card-flip {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.flip-wrapper {
+  height: 380px;
+  position: relative;
+}
+
+.hearts-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  overflow: visible; /* allow hearts to float outside */
+  z-index: 0;
+}
+
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff69b4;
+  transform: rotate(45deg);
+  animation: floatUp 8s linear infinite;
+  opacity: 0.7;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff69b4;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Random positions and delays */
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+.heart:nth-child(4) { left: 70%; animation-delay: 1s; }
+.heart:nth-child(5) { left: 90%; animation-delay: 3s; }
+
+/* Small hearts for mouse trail */
+.heart-trail {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #ff69b4;
+  transform: rotate(45deg);
+  pointer-events: none;
+  animation: trail-fade 1s forwards;
+  opacity: 1;
+  z-index: 10;
+}
+
+.heart-trail::before,
+.heart-trail::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #ff69b4;
+  border-radius: 50%;
+}
+
+.heart-trail::before {
+  top: -7.5px;
+  left: 0;
+}
+
+.heart-trail::after {
+  left: -7.5px;
+  top: 0;
+}
+
+@keyframes trail-fade {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) rotate(45deg);
+    opacity: 0;
+  }
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  padding: 20px;
+  max-width: 900px;
+  margin: 40px auto 80px;
+}
+
+.polaroid {
+  background: #fff0f6; /* soft pink */
+  padding: 15px 15px 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(255, 105, 180, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.polaroid:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.6);
+}
+
+.polaroid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2);
+  display: block;
+  margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+.polaroid:hover img {
+  transform: scale(1.1);
+}
+
+.polaroid p {
+  font-size: 14px;
+  color: #a83266;
+  font-weight: 600;
+  margin: 0;
+  user-select: none;
+  pointer-events: none;
+}
+.gallery-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;  /* Make it bigger */
+  color: #a83266;     /* A romantic pink/purple */
+  margin-top: 50px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(168, 50, 102, 0.4);
+}
+.scan-me {
+  font-family: 'Dancing Script', cursive;  /* use same fancy font */
+  font-size: 1.8rem;
+  color: #a83266;
+  margin: 20px 0 10px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(168, 50, 102, 0.4);
+}
